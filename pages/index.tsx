@@ -1,10 +1,16 @@
 import { FC } from "react";
+import Header from "@/components/Header";
+import Slider from "@/components/Slider";
 
 const HomePage: FC = () => {
 	return (
 		<div>
-			<h1>Welcome to BugPilot</h1>
-			<p>This is your bug tracking dashboard.</p>
+			<Header />
+			<Slider />
+			<div className="bg-color h-screen">
+				Enhance your company’s efficiency and streamline issue resolution with our intuitive bug
+				tracker, designed to simplify management and boost productivity.
+			</div>
 		</div>
 	);
 };
