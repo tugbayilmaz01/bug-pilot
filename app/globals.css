@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -18,7 +19,7 @@
 .manrope {
 	font-family: "Manrope", sans-serif;
 	font-optical-sizing: auto;
-	font-weight: 600;
+	font-weight: 500;
 	font-style: normal;
 }
 
@@ -26,6 +27,20 @@
 	background-color: #c8ff00;
 }
 
+.green-text-color {
+	color: #c8ff00;
+}
+
 .text-color {
 	color: #242424;
+}
+
+.main-purple-color {
+	background-color: #ceb4fe;
+}
+
+.space-mono-regular {
+	font-family: "Space Mono", monospace;
+	font-weight: 400;
+	font-style: normal;
 }
