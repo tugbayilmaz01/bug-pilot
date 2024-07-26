@@ -1,16 +1,13 @@
+// pages/index.tsx
 import { FC } from "react";
 import Header from "@/components/Header";
-import Slider from "@/components/Slider";
+import Landing from "@/components/Landing"; // Adjust the path as necessary
 
 const HomePage: FC = () => {
 	return (
 		<div>
 			<Header />
-			<Slider />
-			<div className="bg-color h-screen">
-				Enhance your company’s efficiency and streamline issue resolution with our intuitive bug
-				tracker, designed to simplify management and boost productivity.
-			</div>
+			<Landing />
 		</div>
 	);
 };
