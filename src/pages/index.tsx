@@ -1,7 +1,6 @@
-// pages/index.tsx
 import { FC } from "react";
-import Header from "@/components/Header";
-import Landing from "@/components/Landing"; // Adjust the path as necessary
+import Header from "../components/Header";
+import Landing from "../components/Landing";
 
 const HomePage: FC = () => {
 	return (

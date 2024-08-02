@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 
 const Header: FC = () => {
 	return (
@@ -10,7 +11,9 @@ const Header: FC = () => {
 				<a href="">Contact</a>
 				<div className="flex gap-x-4 ">
 					<button className="border border-black rounded-md py-2 px-5">Log In</button>
-					<button className="main-green-color py-2 px-3 rounded-md">Register</button>
+					<button className="main-green-color py-2 px-4 rounded-md">
+						<Link href="/signin">Sign in</Link>
+					</button>
 				</div>
 			</div>
 		</div>
