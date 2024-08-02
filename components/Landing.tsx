@@ -41,23 +41,22 @@ const Landing: FC = () => {
 		<div className="relative">
 			<div className="bg-color">
 				<Slider />
-				<div className="flex flex-row items-center justify-between px-8 pt-12 mx-6">
-					<div className="max-w-2xl">
-						<p className="manrope text-4xl">
-							Enhance your company’s efficiency and streamline issue resolution with our intuitive
-							bug tracker!
-						</p>
-					</div>
+				<div className="flex flex-row items-center justify-between px-8 pt-8 mx-6">
+					<p className="manrope text-4xl max-w-2xl mb-24">
+						Enhance your company’s efficiency and streamline issue resolution with our intuitive bug
+						tracker!
+					</p>
+
 					<div className="flex-shrink-0 w-1/3 max-w-lg">
 						<img src={Image.src} alt="developer-image" className="w-full h-auto" />
 					</div>
 				</div>
 			</div>
 			<div className="h-screen p-12">
-				<div className="manrope text-3xl font-bold text-center mb-12 text-gray-800">
-					Get started with Resolve
-				</div>
 				<div className="max-w-4xl mx-auto p-6 bg-color shadow-lg rounded-lg">
+					<div className="manrope text-3xl font-bold mb-12 text-gray-800">
+						Getting started with Resolve
+					</div>
 					<div className="flex flex-col space-y-4">
 						{features.map((feature, index) => (
 							<div
