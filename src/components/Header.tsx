@@ -10,7 +10,10 @@ const Header: FC = () => {
 				<a href="">Features</a>
 				<a href="">Contact</a>
 				<div className="flex gap-x-4 ">
-					<button className="border border-black rounded-md py-2 px-5">Log In</button>
+					<button className="border border-black rounded-md py-2 px-5">
+						{" "}
+						<Link href="/login">Log in</Link>
+					</button>
 					<button className="main-green-color py-2 px-4 rounded-md">
 						<Link href="/signin">Sign in</Link>
 					</button>

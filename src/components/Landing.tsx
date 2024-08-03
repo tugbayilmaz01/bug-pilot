@@ -1,4 +1,3 @@
-// components/LandingPage.tsx
 import { FC, useState } from "react";
 import Slider from "@/components/Slider";
 import Image from "../../public/assets/bug-pilot.png";
