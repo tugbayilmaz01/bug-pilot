@@ -1,13 +1,13 @@
 import { FC } from "react";
-import Header from "../components/Header";
+import LandingHeader from "../components/LandingHeader";
 import Landing from "../components/Landing";
 
 const HomePage: FC = () => {
 	return (
-		<div>
-			<Header />
+		<>
+			<LandingHeader />
 			<Landing />
-		</div>
+		</>
 	);
 };
 
