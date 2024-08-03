@@ -5,7 +5,7 @@ const Footer: FC = () => {
 		<footer className="bg-black text-white py-6 ">
 			<div className="max-w-screen-lg mx-auto px-4">
 				<div className="flex flex-col md:flex-row justify-between items-center"></div>
-				<div className="text-sm manrope">Contact Us</div>
+				<div className="text-sm manrope">Contact the Developer:</div>
 				<div className="text-sm space-mono-regular">tugbayill01@gmail.com</div>
 				<div className="text-center mt-4">
 					<p className="text-sm space-mono-regular">
