@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import bugsReducer from "./bugsSlice";
 
 export const store = configureStore({
-	reducer: {},
+	reducer: {
+		bugs: bugsReducer,
+	},
 });
 
 export type RootState = ReturnType<typeof store.getState>;
