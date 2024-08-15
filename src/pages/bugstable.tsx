@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import BugsHeader from "@/components/BugsHeader";
 import { MdOutlineEdit } from "react-icons/md";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { SlPencil } from "react-icons/sl";
+import BugsHeader from "@/components/BugsHeader";
+import BugModal from "@/components/BugModal";
 
 const BugsTable: React.FC = () => {
 	const [searchInput, setSearchInput] = useState("");
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
-	const handleSubmit = () => {};
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+
 	return (
 		<>
 			<BugsHeader />
@@ -19,7 +27,10 @@ const BugsTable: React.FC = () => {
 					placeholder="Search.."
 					className="px-2 border border-slate-500 rounded-md manrope"
 				/>
-				<button className="flex flex-row items-baseline border border-slate-500 p-2 rounded-md gap-x-1 manrope">
+				<button
+					onClick={openModal}
+					className="flex flex-row items-baseline border border-slate-500 p-2 rounded-md gap-x-1 manrope"
+				>
 					<SlPencil /> Create Ticket
 				</button>
 			</div>
@@ -54,6 +65,7 @@ const BugsTable: React.FC = () => {
 					</tbody>
 				</table>
 			</div>
+			<BugModal isOpen={isModalOpen} onCloseRequest={closeModal} />
 		</>
 	);
 };
