@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./store";
 
-interface Bug {
+export interface Bug {
 	id: string;
 	title: string;
 	status: "open" | "closed";
@@ -15,16 +15,8 @@ interface BugsState {
 	bugs: Bug[];
 }
 
-const loadBugsFromLocalStorage = (): Bug[] => {
-	if (typeof window !== "undefined") {
-		const storedBugs = localStorage.getItem("bugs");
-		return storedBugs ? JSON.parse(storedBugs) : [];
-	}
-	return [];
-};
-
 const initialState: BugsState = {
-	bugs: loadBugsFromLocalStorage(),
+	bugs: [],
 };
 
 const bugsSlice = createSlice({
