@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdOutlineEdit } from "react-icons/md";
 import { RiDeleteBin7Line } from "react-icons/ri";
 import { SlPencil } from "react-icons/sl";
 import BugsHeader from "@/components/BugsHeader";
 import BugModal from "@/components/BugModal";
+import { useAppDispatch } from "@/app/hooks";
+import { Bug, deleteBug } from "@/app/bugsSlice";
 
 const BugsTable: React.FC = () => {
+	const dispatch = useAppDispatch();
 	const [searchInput, setSearchInput] = useState("");
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [tableData, setTableData] = useState<Bug[]>([]);
 
 	const closeModal = () => {
 		setIsModalOpen(false);
@@ -15,6 +19,29 @@ const BugsTable: React.FC = () => {
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
+
+	const handleDelete = (id: string) => {
+		dispatch(deleteBug(id));
+
+		const updatedBugs = tableData.filter((bug) => bug.id !== id);
+		setTableData(updatedBugs);
+		localStorage.setItem("bugs", JSON.stringify(updatedBugs));
+	};
+
+	useEffect(() => {
+		const storedBugs = localStorage.getItem("bugs");
+		if (storedBugs) {
+			try {
+				const parsedBugs: Bug[] = JSON.parse(storedBugs);
+				setTableData(parsedBugs);
+			} catch (error) {
+				console.error("Failed to parse bugs from localStorage:", error);
+				setTableData([]);
+			}
+		} else {
+			setTableData([]);
+		}
+	}, [dispatch]);
 
 	return (
 		<>
@@ -48,20 +75,26 @@ const BugsTable: React.FC = () => {
 						</tr>
 					</thead>
 					<tbody>
-						<tr className="border-b">
-							<td className="py-2 px-4">1</td>
-							<td className="py-2 px-4">Issue with login</td>
-							<td className="py-2 px-4">Open</td>
-							<td className="py-2 px-4">High</td>
-							<td className="py-2 px-4">John Doe</td>
-							<td className="py-2 px-4">None</td>
-							<td className="py-2 px-4">
-								<div className="flex flex-row gap-x-2">
-									<MdOutlineEdit />
-									<RiDeleteBin7Line />
-								</div>
-							</td>
-						</tr>
+						{tableData.map((bug) => (
+							<tr key={bug.id} className="border-b">
+								<td className="py-2 px-4">{bug.id}</td>
+								<td className="py-2 px-4">{bug.title}</td>
+								<td className="py-2 px-4">{bug.status}</td>
+								<td className="py-2 px-4">{bug.priority}</td>
+								<td className="py-2 px-4">{bug.assignee}</td>
+								<td className="py-2 px-4">{bug.attachment ? "Attached" : "None"}</td>
+								<td className="py-2 px-4">
+									<div className="flex flex-row gap-x-2">
+										<button>
+											<MdOutlineEdit />
+										</button>
+										<button onClick={() => handleDelete(bug.id)}>
+											<RiDeleteBin7Line />
+										</button>
+									</div>
+								</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 			</div>
