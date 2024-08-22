@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { MdOutlineEdit } from "react-icons/md";
 import { RiDeleteBin7Line } from "react-icons/ri";
+import { useSelector } from "react-redux";
 import { SlPencil } from "react-icons/sl";
 import BugsHeader from "@/components/BugsHeader";
 import BugModal from "@/components/BugModal";
 import { useAppDispatch } from "@/app/hooks";
-import { Bug, deleteBug } from "@/app/bugsSlice";
+import { Bug, deleteBug, selectBugs } from "@/app/bugsSlice";
 
 const BugsTable: React.FC = () => {
 	const dispatch = useAppDispatch();
+	const bugs = useSelector(selectBugs);
 	const [searchInput, setSearchInput] = useState("");
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [tableData, setTableData] = useState<Bug[]>([]);
@@ -75,7 +77,7 @@ const BugsTable: React.FC = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{tableData.map((bug) => (
+						{bugs.map((bug) => (
 							<tr key={bug.id} className="border-b">
 								<td className="py-2 px-4">{bug.id}</td>
 								<td className="py-2 px-4">{bug.title}</td>
